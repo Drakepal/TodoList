@@ -15,7 +15,11 @@ struct ContentView: View {
         List {
             ForEach(listViewModel.items) { item in
                 ListRowView(item: item)
-                    
+                    .onTapGesture {
+                        withAnimation(.none) {
+                            listViewModel.updateItem(item: item)
+                        }
+                    }
             }
             
             .onDelete(perform: listViewModel.deleteItems)
